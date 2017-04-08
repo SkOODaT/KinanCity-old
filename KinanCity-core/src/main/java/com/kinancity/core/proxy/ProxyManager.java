@@ -40,7 +40,7 @@ public class ProxyManager {
 	@Setter
 	@Getter
 	private ProxyRecycler recycler;
-	
+
 	private boolean proxyRotation = true;
 
 	/**
@@ -73,19 +73,19 @@ public class ProxyManager {
 	public void benchProxy(ProxyInfo proxy) {
 		proxies.remove(proxy);
 		proxyBench.add(proxy);
-		logger.warn("Proxy [{}] moved out of rotation, {} proxy left",proxy, proxies.size());
-		
-		if(recycler != null && getNbProxyInRotation() == 0){
+		logger.warn("Proxy [{}] moved out of rotation, {} proxy left", proxy, proxies.size());
+
+		if (recycler != null && getNbProxyInRotation() == 0) {
 			recycler.checkAndRecycleAllBenched();
 		}
-		
+
 	}
-	
-	public int getNbProxyInRotation(){
+
+	public int getNbProxyInRotation() {
 		return proxies.size();
 	}
-	
-	public int getNbProxyBenched(){
+
+	public int getNbProxyBenched() {
 		return proxyBench.size();
 	}
 }
